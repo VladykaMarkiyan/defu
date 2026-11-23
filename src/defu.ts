@@ -68,4 +68,12 @@ export const defuArrayFn = createDefu((object, key, currentValue) => {
   }
 });
 
+// Custom version with deduplicated array merge support
+export const defuDedup = createDefu((object, key, currentValue) => {
+  if (Array.isArray(object[key]) && Array.isArray(currentValue)) {
+    object[key] = Array.from(new Set([...currentValue, ...object[key]]));
+    return true;
+  }
+});
+
 export type { Defu, DefuFn, DefuInstance } from "./types";
