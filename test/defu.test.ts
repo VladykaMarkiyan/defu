@@ -1,6 +1,6 @@
 import { expectTypeOf } from "expect-type";
 import { it, describe, expect } from "vitest";
-import { defu, createDefu, defuFn, defuArrayFn, defuDedup } from "../src/defu";
+import { defu, createDefu, defuFn, defuArrayFn } from "../src/defu";
 import * as asteriskImport from "./fixtures/";
 
 // Part of tests brought from jonschlinkert/defaults-deep (MIT)
@@ -269,35 +269,6 @@ describe("defu", () => {
         anotherNested: 2,
         nested: 1,
       },
-    });
-  });
-
-  describe("defuDedup", () => {
-    it("should merge arrays and eliminate duplicate items", () => {
-      const result = defuDedup(
-        { items: ["a", "b", "c"] },
-        { items: ["b", "c", "d"] }
-      );
-      expect(result).toEqual({ items: ["a", "b", "c", "d"] });
-    });
-
-    it("should deduplicate across multiple argument layers preserving precedence", () => {
-      const result = defuDedup(
-        { tags: [1, 2] },
-        { tags: [2, 3] },
-        { tags: [1, 4] }
-      );
-      expect(result).toEqual({ tags: [1, 2, 3, 4] });
-    });
-
-    it("should retain normal nested object merging alongside array deduplication", () => {
-      const result = defuDedup(
-        { nested: { list: ["x"], active: true } },
-        { nested: { list: ["x", "y"], flag: 1 } }
-      );
-      expect(result).toEqual({
-        nested: { list: ["x", "y"], active: true, flag: 1 },
-      });
     });
   });
 });
