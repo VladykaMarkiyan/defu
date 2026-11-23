@@ -34,6 +34,8 @@
     "test:types": "tsgo --noEmit"
   },
   "devDependencies": {
+    "@stryker-mutator/core": "^10.1.1",
+    "@stryker-mutator/vitest-runner": "^10.1.1",
     "@types/node": "^25.8.0",
     "@typescript/native-preview": "7.0.0-dev.20260516.1",
     "@vitest/coverage-v8": "^4.1.6",

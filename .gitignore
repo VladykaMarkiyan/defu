@@ -5,3 +5,7 @@ node_modules
 coverage
 dist
 types
+
+.stryker-tmp/
+reports/
+
